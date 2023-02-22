@@ -2,12 +2,12 @@ package quicksort
 
 type Vector []int
 
-func NewVector(capacity int) *Vector {
+func NewVector(capacity int) Vector {
 	v := make(Vector, capacity)
-	return &v
+	return v
 }
 
-func LomutoQuicksort(A *Vector, p, r int) {
+func LomutoQuicksort(A Vector, p, r int) {
 	if p < r {
 		q := LomutoPartition(A, p, r)
 		LomutoQuicksort(A, p, q-1)
@@ -15,11 +15,11 @@ func LomutoQuicksort(A *Vector, p, r int) {
 	}
 }
 
-func LomutoPartition(A *Vector, p, r int) int {
-	x := (*A)[r]
+func LomutoPartition(A Vector, p, r int) int {
+	x := A[r]
 	i := p - 1
 	for j := p; j <= (r - 1); j++ {
-		if (*A)[j] <= x {
+		if A[j] <= x {
 			i += 1
 			Swap(A, i, j)
 		}
@@ -33,15 +33,15 @@ func LomutoPartition(A *Vector, p, r int) int {
 // and all the elements greater than the pivot on
 // the right side. It returns the index of the last element
 // on the smaller side
-func HoarePartition(arr *Vector, low, high int) int {
-	pivot := (*arr)[low]
+func HoarePartition(arr Vector, low, high int) int {
+	pivot := arr[low]
 	i, j := low-1, high+1
 	for {
 		// Find leftmost element greater than
 		// or equal to pivot
 		for {
 			i++
-			if (*arr)[i] >= pivot {
+			if arr[i] >= pivot {
 				break
 			}
 		}
@@ -50,7 +50,7 @@ func HoarePartition(arr *Vector, low, high int) int {
 		// or equal to pivot
 		for {
 			j--
-			if (*arr)[j] <= pivot {
+			if arr[j] <= pivot {
 				break
 			}
 		}
@@ -64,7 +64,7 @@ func HoarePartition(arr *Vector, low, high int) int {
 	}
 }
 
-func HoareQuicksort(A *Vector, p, r int) {
+func HoareQuicksort(A Vector, p, r int) {
 	if p < r {
 		q := HoarePartition(A, p, r)
 		HoareQuicksort(A, p, q)
@@ -72,8 +72,8 @@ func HoareQuicksort(A *Vector, p, r int) {
 	}
 }
 
-func Swap(A *Vector, i, j int) {
-	(*A)[i], (*A)[j] = (*A)[j], (*A)[i]
+func Swap(A Vector, i, j int) {
+	A[i], A[j] = A[j], A[i]
 }
 
 func (v *Vector) Len() int {
@@ -85,5 +85,5 @@ func (v *Vector) Less(i, j int) bool {
 }
 
 func (v *Vector) Swap(i, j int) {
-	Swap(v, i, j)
+	Swap(*v, i, j)
 }
