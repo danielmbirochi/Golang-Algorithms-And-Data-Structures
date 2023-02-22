@@ -11,29 +11,25 @@ import (
 func TestQuicksort(t *testing.T) {
 
 	t.Run("Quicksort using Lomuto Parition Scheme", func(t *testing.T) {
-		input := []int{2, 1, 5, 7, 3, 8, 4, 9, 0, 6}
-		v := quicksort.NewVector(len(input))
-		copy(v, input)
-		fmt.Printf("Input : %v\n", v)
+		s := []int{2, 1, 5, 7, 3, 8, 4, 9, 0, 6}
+		fmt.Printf("Input : %v\n", s)
 
-		quicksort.LomutoQuicksort(v, 0, len(v)-1)
-		fmt.Printf("Output : %v\n", v)
+		quicksort.LomutoQuicksort(s, 0, len(s)-1)
+		fmt.Printf("Output : %v\n", s)
 
-		if sort.IsSorted(&v) {
+		if sort.IntsAreSorted(s) {
 			t.Log("Slice sorted w/ Quicksort successfully!")
 		}
 	})
 
 	t.Run("Quicksort using Hoare Partition Scheme", func(t *testing.T) {
-		input := []int{2, 1, 5, 7, 3, 8, 4, 9, 0, 6}
-		v := quicksort.NewVector(len(input))
-		copy(v, input)
-		fmt.Printf("Input : %v\n", v)
+		s := []int{2, 1, 5, 7, 3, 8, 4, 9, 0, 6}
+		fmt.Printf("Input : %v\n", s)
 
-		quicksort.HoareQuicksort(v, 0, len(v)-1)
-		fmt.Printf("Output : %v\n", v)
+		quicksort.HoareQuicksort(s, 0, len(s)-1)
+		fmt.Printf("Output : %v\n", s)
 
-		if sort.IsSorted(&v) {
+		if sort.IntsAreSorted(s) {
 			t.Log("Slice sorted w/ Hoare Partition Scheme !")
 		}
 	})
