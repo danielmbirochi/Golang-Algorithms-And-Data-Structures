@@ -4,6 +4,10 @@ type DynamicSizedDeque struct {
 	items []int
 }
 
+func (d DynamicSizedDeque) Values() []int {
+	return d.items
+}
+
 func EnqueueFront(d *DynamicSizedDeque, item int) {
 	d.items = append([]int{item}, d.items...)
 }
