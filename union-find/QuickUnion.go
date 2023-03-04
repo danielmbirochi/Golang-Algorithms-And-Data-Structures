@@ -35,7 +35,7 @@ func (qu *QuickUnion) Root(p int) int {
 }
 
 func (qu *QuickUnion) Validate(p int) {
-	if p < 0 && p >= len(qu.parent) {
+	if p < 0 || p >= len(qu.parent) {
 		panic("invalid index")
 	}
 }
