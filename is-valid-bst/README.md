@@ -14,7 +14,7 @@
   <span>BST</span> nodes themselves or <span>None</span> / <span>null</span>.
 </p>
 <h3>Sample Input</h3>
-<pre><span class="CodeEditor-promptParameter">tree</span> =   5
+<pre><span class="CodeEditor-promptParameter">tree</span> =    5
        /     \
       2       7
     /   \   /   \
